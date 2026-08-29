@@ -1,6 +1,6 @@
 # PARA BELLUM
 
-### *Si vis pacem, para bellum.* — If you want peace, prepare for war.
+### _Si vis pacem, para bellum._ — If you want peace, prepare for war.
 
 A terminal-first IDE built in Rust. No telemetry. No marketplace gatekeepers. No browser engine rendering text. Just you, the buffer, and the shell.
 
@@ -8,12 +8,12 @@ A terminal-first IDE built in Rust. No telemetry. No marketplace gatekeepers. No
 
 ## Why
 
-Every generation of engineers inherits tools built by the generation before. The current generation inherited editors that phone home before you've typed a single character, ship hundreds of megabytes of Chromium to render text, and default telemetry to *on* because opt-out beats opt-in when the metric that matters is engagement, not trust.
+Every generation of engineers inherits tools built by the generation before. The current generation inherited editors that phone home before you've typed a single character, ship hundreds of megabytes of Chromium to render text, and default telemetry to _on_ because opt-out beats opt-in when the metric that matters is engagement, not trust.
 
 **Para Bellum** is the editor that answers to no one but the person typing in it.
 
 - **Terminal-native.** Lives inside the machine, not next to it. No window manager tax, no GPU compositor between your keystroke and the character on screen.
-- **Zero telemetry.** Not off-by-default. *Zero.* If we ever need usage data, we'll ask you in the open.
+- **Zero telemetry.** Not off-by-default. _Zero._ If we ever need usage data, we'll ask you in the open.
 - **Auditable top to bottom.** Reproducible builds. Every dependency justified. Every decision made in public.
 - **Rich documents in the terminal.** Markdown preview, Mermaid diagrams, LaTeX math — without a browser engine.
 - **Sandboxed plugins.** WASM-based, capability-gated. No plugin — not even first-party — gets ambient access to your filesystem.
@@ -86,26 +86,26 @@ The core architectural invariant: **`para-core` must never depend on any termina
 
 **Week 1 complete.** The foundation is laid:
 
-| Component | Status | Details |
-|-----------|--------|---------|
-| `para-core` buffer | ✅ Done | Rope-backed (`ropey`), O(log n) insert/delete, Unicode-correct |
-| Command bus types | ✅ Done | `Command` enum, `InverseCommand`, `Editable` trait |
-| Cursor & Selection | ✅ Done | Position tracking, bidirectional selection, sticky column |
-| View system | ✅ Done | Buffer ID, scroll state, viewport dimensions |
-| Undo/Redo stack | ✅ Done | Configurable max depth, redo-clearing on new edits |
-| Boundary check | ✅ Done | `cargo xtask check-boundary` — zero UI deps in core |
-| Unit tests | ✅ 39 passing | Buffer ops, unicode, panics, undo/redo, cursor, view |
+| Component          | Status        | Details                                                        |
+| ------------------ | ------------- | -------------------------------------------------------------- |
+| `para-core` buffer | ✅ Done       | Rope-backed (`ropey`), O(log n) insert/delete, Unicode-correct |
+| Command bus types  | ✅ Done       | `Command` enum, `InverseCommand`, `Editable` trait             |
+| Cursor & Selection | ✅ Done       | Position tracking, bidirectional selection, sticky column      |
+| View system        | ✅ Done       | Buffer ID, scroll state, viewport dimensions                   |
+| Undo/Redo stack    | ✅ Done       | Configurable max depth, redo-clearing on new edits             |
+| Boundary check     | ✅ Done       | `cargo xtask check-boundary` — zero UI deps in core            |
+| Unit tests         | ✅ 39 passing | Buffer ops, unicode, panics, undo/redo, cursor, view           |
 
 ### Roadmap
 
-| Milestone | Target | Description |
-|-----------|--------|-------------|
-| **M0** | Week 4 | Core editing loop: open, edit, save, undo/redo 100+ deep, handles 50MB files |
-| **M1** | Week 8 | Tree-sitter highlighting + LSP (rust-analyzer) for one language |
-| **M2** | Week 12 | Live Markdown preview in terminal, CommonMark spec compliance |
-| **M3** | Week 20 | Mermaid flowchart + sequence diagrams, with SVG/PNG/PDF export |
-| **M4** | Week 28 | WASM plugin host with capability-gated sandbox |
-| **M5** | Week 32 | First public alpha: `cargo install`, Linux x86_64 + aarch64 |
+| Milestone | Target  | Description                                                                  |
+| --------- | ------- | ---------------------------------------------------------------------------- |
+| **M0**    | Week 4  | Core editing loop: open, edit, save, undo/redo 100+ deep, handles 50MB files |
+| **M1**    | Week 8  | Tree-sitter highlighting + LSP (rust-analyzer) for one language              |
+| **M2**    | Week 12 | Live Markdown preview in terminal, CommonMark spec compliance                |
+| **M3**    | Week 20 | Mermaid flowchart + sequence diagrams, with SVG/PNG/PDF export               |
+| **M4**    | Week 28 | WASM plugin host with capability-gated sandbox                               |
+| **M5**    | Week 32 | First public alpha: `cargo install`, Linux x86_64 + aarch64                  |
 
 ---
 
@@ -144,7 +144,7 @@ This is a marathon, not a sprint. We need people who want their next commit to m
 ### We need
 
 - **Rust engineers** who've touched a rope data structure, a parser, or `wasmtime` and want to build the editor that respects every terminal in the world.
-- **Security researchers** who want to red-team a capability model *before* it ships, not after it's breached.
+- **Security researchers** who want to red-team a capability model _before_ it ships, not after it's breached.
 - **Experienced maintainers** who've earned scars running open-source at scale, to help this project grow without losing what it's for.
 - **You**, if you've ever closed an editor's settings menu because you couldn't find where the phone-home switch was hidden.
 
@@ -157,7 +157,7 @@ This is a marathon, not a sprint. We need people who want their next commit to m
 
 ### What we refuse to build
 
-We believe a manifesto that only says what it's *for* is a brochure. Here's what we're against:
+We believe a manifesto that only says what it's _for_ is a brochure. Here's what we're against:
 
 - **No telemetry-by-default.** Ever.
 - **No single-company marketplace** as the only plugin distribution channel. Anyone can run a registry.
@@ -184,13 +184,10 @@ The tools to build the editor that respects you were not available when VSCode l
 
 ## License
 
-Licensed under either of:
+Licensed under the [GNU General Public License v3.0](LICENSE) (GPLv3).
 
-- [MIT License](LICENSE-MIT)
-- [Apache License, Version 2.0](LICENSE-APACHE)
-
-at your option.
+This ensures the editor remains free, open, and cannot be enclosed by proprietary derivatives.
 
 ---
 
-<sub>**Para Bellum.** *Prepare accordingly.*</sub>
+<sub>**Para Bellum.** _Prepare accordingly._</sub>
