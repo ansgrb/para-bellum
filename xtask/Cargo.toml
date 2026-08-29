@@ -1,0 +1,7 @@
+[package]
+name = "xtask"
+version = "0.1.0"
+edition = "2021"
+
+# xtask is workspace-local tooling, not published.
+# It intentionally does NOT inherit workspace.package.

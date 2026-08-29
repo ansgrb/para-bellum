@@ -1,0 +1,16 @@
+[package]
+name = "para-tui"
+description = "Terminal UI frontend for Para Bellum"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lints]
+workspace = true
+
+[[bin]]
+name = "para"
+path = "src/main.rs"
+
+[dependencies]
+para-core = { path = "../para-core" }

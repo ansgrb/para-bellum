@@ -1,0 +1,25 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/para-core",
+    "crates/para-tui",
+    "crates/para-syntax",
+    "crates/para-docengine",
+    "crates/para-plugin",
+    "crates/para-gui",
+    "xtask",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.75"
+license = "MIT OR Apache-2.0"
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
+
+[workspace.lints.clippy]
+all = { level = "warn", priority = -1 }
+pedantic = { level = "warn", priority = -1 }
+nursery = { level = "warn", priority = -1 }

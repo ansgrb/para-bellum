@@ -1,0 +1,11 @@
+[package]
+name = "para-gui"
+description = "Native GUI frontend stub for Para Bellum (boundary enforcement)"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]

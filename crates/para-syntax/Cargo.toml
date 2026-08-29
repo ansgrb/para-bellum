@@ -1,0 +1,11 @@
+[package]
+name = "para-syntax"
+description = "Tree-sitter integration, syntax highlighting, and LSP client for Para Bellum"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]

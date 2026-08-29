@@ -1,0 +1,11 @@
+[package]
+name = "para-plugin"
+description = "WASM plugin host and capability model for Para Bellum"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
