@@ -27,7 +27,8 @@ pub struct Selection {
 
 impl Selection {
     /// Get the normalized (min, max) range regardless of direction.
-    pub fn range(&self) -> (usize, usize) {
+    #[must_use]
+    pub const fn range(&self) -> (usize, usize) {
         if self.anchor < self.head {
             (self.anchor, self.head)
         } else {
@@ -36,20 +37,29 @@ impl Selection {
     }
 
     /// Number of characters selected.
-    pub fn len(&self) -> usize {
+    #[must_use]
+    pub const fn len(&self) -> usize {
         let (min, max) = self.range();
         max - min
     }
 
+    /// Returns true if the selection is empty (anchor == head).
+    #[must_use]
+    pub const fn is_empty(&self) -> bool {
+        self.anchor == self.head
+    }
+
     /// Returns true if the selection extends forwards from the anchor.
-    pub fn is_forward(&self) -> bool {
+    #[must_use]
+    pub const fn is_forward(&self) -> bool {
         self.head >= self.anchor
     }
 }
 
 impl Cursor {
     /// Create a new cursor at the given offset.
-    pub fn new(offset: usize) -> Self {
+    #[must_use]
+    pub const fn new(offset: usize) -> Self {
         Self {
             position: CursorPosition { offset },
             selection: None,
@@ -58,12 +68,13 @@ impl Cursor {
     }
 
     /// Get the current offset of the cursor.
-    pub fn offset(&self) -> usize {
+    #[must_use]
+    pub const fn offset(&self) -> usize {
         self.position.offset
     }
 
     /// Move the cursor to a new offset, clearing any selection and sticky column.
-    pub fn move_to(&mut self, offset: usize) {
+    pub const fn move_to(&mut self, offset: usize) {
         self.position.offset = offset;
         self.selection = None;
         self.sticky_col = None;

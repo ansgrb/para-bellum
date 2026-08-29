@@ -37,6 +37,7 @@ pub struct View {
 
 impl View {
     /// Create a new view for a buffer with specified dimensions.
+    #[must_use]
     pub fn new(buffer_id: BufferId, width: u16, height: u16) -> Self {
         Self {
             buffer_id,

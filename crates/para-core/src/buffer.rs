@@ -17,6 +17,7 @@ pub struct Buffer {
 
 impl Buffer {
     /// Create a new, empty buffer.
+    #[must_use]
     pub fn new() -> Self {
         Self {
             rope: Rope::new(),
@@ -25,6 +26,8 @@ impl Buffer {
     }
 
     /// Create a buffer from a string.
+    #[must_use]
+    #[allow(clippy::should_implement_trait)]
     pub fn from_str(text: &str) -> Self {
         Self {
             rope: Rope::from_str(text),
@@ -33,6 +36,10 @@ impl Buffer {
     }
 
     /// Create a buffer from a reader.
+    ///
+    /// # Errors
+    ///
+    /// Returns an error if reading from the reader fails.
     pub fn from_reader<R: io::Read>(reader: R) -> io::Result<Self> {
         Ok(Self {
             rope: Rope::from_reader(reader)?,
@@ -55,61 +62,75 @@ impl Buffer {
     }
 
     /// Get the character at the given index.
+    #[must_use]
     pub fn char_at(&self, char_idx: usize) -> char {
         self.rope.char(char_idx)
     }
 
     /// Get a slice representing the specified line (0-indexed).
+    #[must_use]
     pub fn line(&self, line_idx: usize) -> RopeSlice<'_> {
         self.rope.line(line_idx)
     }
 
     /// Get a slice of characters in the range [start, end).
+    #[must_use]
     pub fn slice(&self, start: usize, end: usize) -> RopeSlice<'_> {
         self.rope.slice(start..end)
     }
 
     /// Returns the length of the buffer in characters.
+    #[must_use]
     pub fn len_chars(&self) -> usize {
         self.rope.len_chars()
     }
 
     /// Returns the length of the buffer in lines.
+    #[must_use]
     pub fn len_lines(&self) -> usize {
         self.rope.len_lines()
     }
 
     /// Returns the length of the buffer in bytes.
+    #[must_use]
     pub fn len_bytes(&self) -> usize {
         self.rope.len_bytes()
     }
 
     /// Returns true if the buffer is empty.
+    #[must_use]
     pub fn is_empty(&self) -> bool {
         self.rope.len_bytes() == 0
     }
 
     /// Returns true if the buffer has been modified.
-    pub fn is_modified(&self) -> bool {
+    #[must_use]
+    pub const fn is_modified(&self) -> bool {
         self.modified
     }
 
     /// Mark the buffer as saved, clearing the modified flag.
-    pub fn mark_saved(&mut self) {
+    pub const fn mark_saved(&mut self) {
         self.modified = false;
     }
 
     /// Convert a character index to a line index.
+    #[must_use]
     pub fn char_to_line(&self, char_idx: usize) -> usize {
         self.rope.char_to_line(char_idx)
     }
 
     /// Convert a line index to the character index at the start of the line.
+    #[must_use]
     pub fn line_to_char(&self, line_idx: usize) -> usize {
         self.rope.line_to_char(line_idx)
     }
 
     /// Write the buffer content to a writer.
+    ///
+    /// # Errors
+    ///
+    /// Returns an error if writing to the writer fails.
     pub fn write_to<W: io::Write>(&self, writer: W) -> io::Result<()> {
         self.rope.write_to(writer)
     }

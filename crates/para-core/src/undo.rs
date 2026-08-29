@@ -11,7 +11,8 @@ pub struct UndoStack {
 
 impl UndoStack {
     /// Create a new undo stack with a maximum depth.
-    pub fn new(max_depth: usize) -> Self {
+    #[must_use]
+    pub const fn new(max_depth: usize) -> Self {
         Self {
             undo: Vec::new(),
             redo: Vec::new(),
@@ -44,12 +45,14 @@ impl UndoStack {
     }
 
     /// Number of items in the undo stack.
-    pub fn undo_depth(&self) -> usize {
+    #[must_use]
+    pub const fn undo_depth(&self) -> usize {
         self.undo.len()
     }
 
     /// Number of items in the redo stack.
-    pub fn redo_depth(&self) -> usize {
+    #[must_use]
+    pub const fn redo_depth(&self) -> usize {
         self.redo.len()
     }
 
